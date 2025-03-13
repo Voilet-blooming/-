@@ -1,0 +1,107 @@
+package com.myblog.firstjavaproject;
+
+import java.util.Scanner;//导入Scanner类
+
+//定义Menu类
+class MenuItem{
+    String name;
+    double price;
+
+    //构造函数
+    public MenuItem(String name,double price){
+        this.name=name;
+        this.price=price;
+    }
+}
+public class Menu {
+    private double price;
+    private String name;
+
+    public static void main(String[] args) {
+        //创建一个数组，用来存储菜品编号和价格
+        //创建土豆的Menu对象并设置属性
+        Menu menu1 = new Menu();
+        menu1.name = "potato";
+        menu1.price = 10.0;
+
+        //创建西红柿的Menu对象并设置属性
+        Menu menu2 = new Menu();
+        menu2.name = "tomato";
+        menu2.price = 20.0;
+
+        //创建鸡蛋的Menu对象并设置属性
+        Menu menu3 = new Menu();
+        menu3.name = "egg";
+        menu3.price = 30.0;
+
+        //菜单计算器：利用基础语法，输入菜品编号和数量，输出总价
+        int num = 0;
+        int totalPrice = 0;
+        int i = -1;
+        //输入i的值进行判断是否要继续点菜，如果i为0则结束循环
+        Scanner scanner = new Scanner(System.in);
+        int menuChoice = 0;
+        double itemPrice = 0;
+        while (i != 0) {
+            System.out.println("请输入菜品编号（1-potato,2-tomato,3-egg,0-结束：");
+            menuChoice = scanner.nextInt();
+            //1-potato是10.0元,2-tomato是20.0元,3-egg是30.0元,0-结束
+            switch (menuChoice) {
+                case 1:
+                    itemPrice = menu1.price;
+                    System.out.println("请输入菜品数量(按0则取消)：");
+                    num = scanner.nextInt();
+                    if(num<0){
+                        System.out.println("菜品数量不能小于0");
+                    }else if(num==0){
+                        System.out.println("取消该菜品");
+                    }else{
+                        System.out.println("您选择的菜品为：" + menuChoice + "，" +
+                                "数量为：" + num+"，"+"价钱："+(itemPrice*num) );
+                    }
+                    break;
+                case 2:
+                    itemPrice = menu2.price;
+                    System.out.println("请输入菜品数量(按0则取消)：");
+                    num = scanner.nextInt();
+                    if(num<0){
+                        System.out.println("菜品数量不能小于0");
+                    }else if(num==0){
+                        System.out.println("取消该菜品");
+                    }else{
+                        System.out.println("您选择的菜品为：" + menuChoice + "，" +
+                                "数量为：" + num+"，"+"价钱："+(itemPrice*num) );
+                    }
+                    break;
+                case 3:
+                    itemPrice = menu3.price;
+                    System.out.println("请输入菜品数量(按0则取消)：");
+                    num = scanner.nextInt();
+                    if(num<0){
+                        System.out.println("菜品数量不能小于0");
+                    }else if(num==0){
+                        System.out.println("取消该菜品");
+                    }else{
+                        System.out.println("您选择的菜品为：" + menuChoice + "，" +
+                                "数量为：" + num+"，"+"价钱："+(itemPrice*num) );
+                    }
+                    break;
+                default:
+                    System.out.println("输入有误，请重新输入！");
+                    continue;
+            }
+            if (menuChoice == 0) {
+                break;
+            }
+
+            totalPrice += num * itemPrice;
+
+            System.out.println("总价为："+totalPrice);
+        }
+
+        scanner.close();
+    }
+}
+
+
+
